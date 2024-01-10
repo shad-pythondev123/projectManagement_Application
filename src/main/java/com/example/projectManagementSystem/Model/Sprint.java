@@ -7,21 +7,19 @@ import lombok.experimental.FieldDefaults;
 import java.time.LocalDate;
 
 @Entity
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@FieldDefaults(level= AccessLevel.PRIVATE)
 @Builder
 @Data
 public class Sprint {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    String id;
-    String name;
-    LocalDate startDate;
-    LocalDate finishDate;
+    private String id;
+    private String name;
+    private LocalDate startDate;
+    private LocalDate finishDate;
+    private String projectId;
     @ManyToOne
-    @JoinColumn
-    Project project;
+    @JoinColumn(name = "project")
+    private Project project;
 }

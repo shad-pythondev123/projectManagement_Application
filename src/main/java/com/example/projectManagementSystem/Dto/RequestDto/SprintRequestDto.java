@@ -9,10 +9,10 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class UserRequestDto {
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String projectId;
-    private String password;
+
+public class SprintRequestDto {
+    String name;
+    LocalDate startDate;
+    LocalDate finishDate;
+    String projectId;
 }

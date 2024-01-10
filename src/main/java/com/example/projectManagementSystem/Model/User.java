@@ -4,23 +4,30 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
-@Getter
-@Setter
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@FieldDefaults(level= AccessLevel.PRIVATE)
 @Data
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
-    String name;
+    private Long id;
+    private String firstname;
+
+    @Column(name = "last_name")
+    private String lastname;
     @Column(unique = true)
-    String email;
-    String password;
+    private String email;
+    private String password;
+    private String projectId;
     @ManyToOne
-    @JoinColumn
-    Project project;
+    @JoinColumn(name = "project")
+    private Project project;
+
+
 }
