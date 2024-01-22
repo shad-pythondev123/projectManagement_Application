@@ -13,7 +13,7 @@ public class ProjectUserController {
     @Autowired
     ProjectUserService projectUserService;
     @PostMapping("/add-user")
-    public ResponseDto addUser(@RequestBody ProjectUserRequest projectUserRequest){
+    public ResponseDto addUserToProject(@RequestBody ProjectUserRequest projectUserRequest){
         return projectUserService.addProjectUser(projectUserRequest);
     }
     @GetMapping("/get-projects")

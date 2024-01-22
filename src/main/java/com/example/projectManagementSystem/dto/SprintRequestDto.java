@@ -1,18 +1,14 @@
-//package com.example.projectManagementSystem.Dto.RequestDto;
-//
-//import lombok.*;
-//import lombok.experimental.FieldDefaults;
-//
-//import java.time.LocalDate;
-//
-//@Data
-//@NoArgsConstructor
-//@AllArgsConstructor
-//
-//
-//public class SprintRequestDto {
-//    String name;
-//    LocalDate startDate;
-//    LocalDate finishDate;
-//    String projectId;
-//}
+package com.example.projectManagementSystem.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class SprintRequestDto {
+    String name;
+    String projectId;
+}

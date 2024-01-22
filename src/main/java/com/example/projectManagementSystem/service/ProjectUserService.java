@@ -50,10 +50,11 @@ public class ProjectUserService {
             responseDto.setData(user);
             return responseDto;
         }
-        ProjectUser projectUser1= projectUserRepository.findByProjectIdAndIsAdmin(projectUserRequest.getProjectId(), projectUserRequest.isAdmin()).orElse(null);
+        ProjectUser projectUser1= projectUserRepository.findByProjectId(projectUserRequest.getProjectId()).orElse(null);
         //use utilityclass to get and validate username and project admin.
         //search projectUser if exists with submittedbyId as userId, projectId, isAdmin==true.
-        if(userName.equals(user.get().getUsername()) && project.getCreatedBy()==user.get().getId()) {
+        Optional<User> user1= Optional.ofNullable(userRepository.findByEmail(userName));
+        if(project.getCreatedBy()==user1.get().getId()) {
             if (projectUser1 != null) {
                 ProjectUser projectUser = new ProjectUser();
                 projectUser.setAdmin(projectUserRequest.isAdmin());

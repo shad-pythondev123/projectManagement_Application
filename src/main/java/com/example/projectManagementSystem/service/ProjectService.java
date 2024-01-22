@@ -50,7 +50,6 @@ public class ProjectService {
         project.setName(projectRequestDto.getName());
         project.setDescription(projectRequestDto.getDescription());
         project.setCreatedBy(user.getId());
-        project.setUpdatedBy(user.getId());
         project.setStartDate(LocalDate.now());
         project.setUpdatedDate(LocalDate.now());
         Project savedProject= projectRepository.save(project);
@@ -59,6 +58,7 @@ public class ProjectService {
         projectUserId.setProjectId(savedProject.getId());
         projectUserId.setUserId(user.getId());
         projectUser.setId(projectUserId);
+        projectUser.setCreatedDate(LocalDate.now());
         projectUser.setAdmin(true);
         projectUserRepository.save(projectUser);
 //        todo - add projectUser in projectUser Table with isadmin==true.
@@ -89,6 +89,13 @@ public class ProjectService {
         project.setDescription(projectRequestDto.getDescription());
         project.setUpdatedDate(LocalDate.now());
         Project savedProject=projectRepository.save(project);
+        ProjectUser projectUser= new ProjectUser();
+        ProjectUserId projectUserId= new ProjectUserId();
+        projectUserId.setProjectId(savedProject.getId());
+        projectUserId.setUserId(user.getId());
+        projectUser.setId(projectUserId);
+        projectUser.setCreatedDate(LocalDate.now());
+        projectUser.setAdmin(true);
         responseDto.setMessage(Constants.SUCCESS);
         responseDto.setData(savedProject);
         return responseDto;

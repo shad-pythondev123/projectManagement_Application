@@ -39,7 +39,7 @@ public class UserController {
     public ResponseDto createUser(@RequestBody SignupRequest signupRequest){
         log.info("Entering addUser {}",signupRequest.toString());
 
-         return    userService.createUser(signupRequest);
+         return userService.createUser(signupRequest);
     }
     @PostMapping("/authentication")
     public AuthenticationResponse createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest, HttpServletResponse response) throws BadCredentialsException, DisabledException, UsernameNotFoundException, IOException, java.io.IOException {
